@@ -139,6 +139,15 @@ class HBNBCommand(cmd.Cmd):
         if arg[0] in options:
             if arg[1] == "all()":
                 self.do_all(arg[0])
+            elif arg[1] == "count()":
+                cont = 0
+                for key, value in models.storage.all().items():
+                    tmp = key.split('.')
+                    if arg[0] == tmp[0]:
+                        cont += 1
+                print(cont)
+                return False
+
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
