@@ -152,8 +152,8 @@ class HBNBCommand(cmd.Cmd):
                 tmp = arg[0] + " " + id
                 self.do_show(tmp)
                 return False 
-             elif arg[1][0:5] == "destroy(":
-                id = arg[1][5:-1]
+            elif arg[1][0:8] == "destroy(":
+                id = arg[1][8:-1]
                 tmp = arg[0] + " " + id
                 self.do_destroy(tmp)
                 return False
