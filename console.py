@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
             for key in models.storage.all():
                 list_.append(str(models.storage.all()[key]))
             print(list_)
-        elif (len(arg) == 1):
+        elif (len(arg) == 1 and arg[0] in options):
             for key, value in models.storage.all().items():
                 if value.__class__.__name__ == arg[0]:
                     list_.append(value.__str__())
