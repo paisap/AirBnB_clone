@@ -86,10 +86,15 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ Prints all string representation of all """
         arg = shlex.split(line)
-        if (len(arg) == 0 or arg[0] in options):
-            list_ = []
+        list_ = []
+        if (len(arg) == 0):
             for key in models.storage.all():
                 list_.append(str(models.storage.all()[key]))
+            print(list_)
+        elif (len(arg) == 1):
+            for key, value in models.storage.all().items():
+                if value.__class__.__name__ == arg[0]:
+                    list_.append(value.__str__())
             print(list_)
         else:
             print("** class doesn't exist **")
@@ -128,6 +133,12 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def default(self, line):
+        """ advanced """
+        arg = line.split('.')
+        if arg[0] in options:
+            if arg[1] == "all()":
+                self.do_all(arg[0])
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
