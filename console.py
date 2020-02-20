@@ -147,6 +147,11 @@ class HBNBCommand(cmd.Cmd):
                         cont += 1
                 print(cont)
                 return False
+            elif arg[1][0:5] == "show(":
+                id = arg[1][5:-1]
+                tmp = arg[0] + " " + id
+                self.do_show(tmp)
+                return False 
 
 
 if __name__ == '__main__':
